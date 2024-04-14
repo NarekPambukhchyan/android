@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.netify.app">
+
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID" tools:node="remove"/>
+
+    <uses-feature
+        android:name="android.software.leanback"
+        android:required="true"/>
+    <uses-feature android:name="android.hardware.touchscreen"
+        android:required="false"/>
+    <uses-feature android:name="android.hardware.faketouch"
+        android:required="false"/>
+    <uses-feature android:name="android.hardware.telephony"
+        android:required="false"/>
+    <uses-feature android:name="android.hardware.camera"
+        android:required="false"/>
+    <uses-feature android:name="android.hardware.nfc"
+        android:required="false"/>
+    <uses-feature android:name="android.hardware.location.gps"
+        android:required="false"/>
+    <uses-feature android:name="android.hardware.microphone"
+        android:required="false"/>
+    <uses-feature android:name="android.hardware.sensor"
+        android:required="false"/>
+    <uses-feature android:name="android.hardware.wifi"
+        android:required="false"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/logo"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/logo"
+        android:supportsRtl="true"
+        android:largeHeap="true"
+        android:banner="@mipmap/ic_banner_foreground"
+        android:usesCleartextTraffic="true"
+        android:hardwareAccelerated="true"
+        android:theme="@style/Theme.AppCompat.NoActionBar">
+        <activity
+            android:name=".MainActivity"
+            android:launchMode="singleTask"
+            android:clearTaskOnLaunch="true"
+            android:stateNotNeeded="true"
+            android:screenOrientation="landscape"
+            android:exported="true">
+            <intent-filter>
+
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+
+            </intent-filter>
+        </activity>
+
+        <receiver
+            android:name=".BootReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+
+    </application>
+
+</manifest>
